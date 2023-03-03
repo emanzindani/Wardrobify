@@ -24,7 +24,7 @@ class Hat(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.style_name
 
     def get_api_url(self):
         return reverse("api_show_hat", kwargs={"id": self.id})

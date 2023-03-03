@@ -19,11 +19,7 @@ def poll():
             url = 'http://wardrobe-api:8000/api/locations/'
 
             response = requests.get(url)
-            print(response)
             content = json.loads(response.content)
-
-            print(content)
-            print("GOT A CONTENT!!!")
 
             for location in content["locations"]:
                 LocationVO.objects.update_or_create(

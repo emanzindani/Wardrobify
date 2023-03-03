@@ -16,7 +16,9 @@ class LocationVODetailEncoder(ModelEncoder):
 class HatListEncoder(ModelEncoder):
     model = Hat
     properties = [
+        "fabric",
         "style_name",
+        "id",
     ]
 
 
@@ -28,6 +30,7 @@ class HatDetailEncoder(ModelEncoder):
         "color",
         "created",
         "url_picture",
+        "location",
     ]
     encoders = {
         "location": LocationVODetailEncoder(),
@@ -72,6 +75,7 @@ def list_hats(request, location_vo_id=None):
         # Get the Location object and put it in the content dict
         try:
             location_href = f"/api/locations/{location_vo_id}/"
+
             location = LocationVO.objects.get(import_href=location_href)
             content["location"] = location
 
@@ -83,13 +87,13 @@ def list_hats(request, location_vo_id=None):
 
         # Use the fabric, style name, color in the content dictionary to call the get_photo ACL function
         # Use the returned dictionary to update the content dictionary
-        content["picture_url"] = get_photo(content["fabric"], content["style_name"], content["color"]) #adds a new pair in the content dictionary
+        content["url_picture"] = get_photo(content["fabric"], content["style_name"], content["color"]) #adds a new pair in the content dictionary
 
 
         hat = Hat.objects.create(**content)
         return JsonResponse(
             hat,
-            encoder=HatDetailEncoder,
+            encoder=HatListEncoder,
             safe=False,
         )
 

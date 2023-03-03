@@ -8,7 +8,7 @@ def get_photo(fabric, style_name, color):
     # Create the URL for the request with the fabric, style name and color:
     url = "https://api.pexels.com/v1/search"
     parameters = {
-        "query": f"{fabric} {style_name} {color}",
+        "query": f"{fabric} {style_name} hat clothing {color}",
         "per_page": 1,
     }
     # Make the request:
