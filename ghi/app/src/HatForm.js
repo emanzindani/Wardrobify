@@ -72,7 +72,7 @@ function HatForm (props) {
         console.log(data);
 
         //Sends data to the server:
-        const hatUrl = 'http://localhost:8090/api/hats/';
+        const hatUrl = `http://localhost:8090${selectedLocation}hats/`;
 
         const fetchConfig = {
         method: "post",
@@ -83,9 +83,9 @@ function HatForm (props) {
         };
 
         const response = await fetch(hatUrl, fetchConfig);
+
         if (response.ok) {
             const newHat = await response.json();
-            console.log(newHat);
 
             setFabric('');
             setSyle('');
@@ -94,8 +94,6 @@ function HatForm (props) {
             setSelectedLocation('');
         }
     }
-
-
 
     //RETURNS THE FORM FOR A NEW HAT--------------------------------------------------------
     return (
@@ -106,23 +104,24 @@ function HatForm (props) {
                         <h1>Create a new hat</h1>
                     <form onSubmit={handleSubmit} id="create-conference-form">
                         <div className="form-floating mb-3">
-                            <input value={fabric} onChange={handleFabricChange} placeholder="Fabric" required type="text" name="fabric" id="fabric" className="form-control"/>
-                            <label htmlFor="name">Fabric</label>
+                            <input value={fabric} onChange={handleFabricChange} placeholder="Enter a fabric" required type="text" name="fabric" id="fabric" className="form-control"/>
+                            <label htmlFor="fabric">Fabric</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input value={style} onChange={handleStyleChange} placeholder="Starts" required type="text" name="style" id="style" className="form-control"/>
-                            <label htmlFor="starts">Style</label>
+                            <label htmlFor="style">Style</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input value={color} onChange={handleColorChange} placeholder="Color" required type="text" name="color" id="color" className="form-control"/>
-                            <label htmlFor="ends">Color</label>
+                            <label htmlFor="color">Color</label>
                         </div>
-                        <div className="mb-3">
+                        <div className="form-floating mb-3">
+                            <input value={picture} onChange={handlePictureChange} placeholder="Picture url" required type="url" name="picture" id="picture" className="form-control" rows="3"/>
                             <label htmlFor="picture">Picture</label>
-                            <input value={picture} onChange={handlePictureChange} className="form-control" placeholder="Picture url" required type="url" name="picture" id="picture" rows="3"/>
                         </div>
                         <div className="mb-3">
-                            <select value={selectedLocation} onChange={handleLocationChange} required name="location" id="location" className="form-select">
+                            <select value={selectedLocation} onChange={handleLocationChange} placeholder="Select a closet" required name="location" id="location" className="form-select">
+                                <option value="">Selecto a closet</option>
                                 {locations.map(location => {
                                     return (
                                     <option key={location.href} value={location.href}>
