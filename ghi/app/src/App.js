@@ -3,7 +3,8 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import HatsList from './HatsList';
 import HatForm from './HatForm';
-
+import ShoesList from './ShoesList';
+import ShoeForm from './ShoeForm';
 
 
 
@@ -17,8 +18,13 @@ function App(props) {
         <Nav />
           <Routes>
             <Route index element={<MainPage />} />
+
             <Route path="hats/new" element={<HatForm />} />
             <Route path="hats" element={<HatsList hats={props.hats} />} />
+
+            <Route path="shoes/new" element={<ShoeForm />} />
+            <Route path="shoes" element={<ShoesList shoes={props.shoes} />} />
+
           </Routes>
         </BrowserRouter>
       </>
