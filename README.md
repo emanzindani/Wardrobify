@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Eman Zindani
-* Person 2 - Alix de Pannemaecker
+* Eman Zindani - shoes
+* Alix de Pannemaecker - hats
 
 ## Design
 
