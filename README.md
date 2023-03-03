@@ -9,8 +9,16 @@ Team:
 
 ## Shoes microservice
 
-Explain your models and integration with the wardrobe
-microservice, here.
+Set up bin endpoints in insomnia
+1. Back End:
+    created models for shoe as well as a "bin" value object from the Wardrobe service
+    created views and registered them in urls.py file:
+        views includes: GET and POST method to list shoes and GET, DELETE AND put method to show shoe details
+    Included shoes in insomnia and made sure all methods were working
+2. Front End:
+    Made changes to App.js file to include routes for both hats and shoes with partner
+    Created a shoe list which displays all details and added a delete button
+    Created a shoe form with a bin dropdown and a create button
 
 ## Hats microservice
 
