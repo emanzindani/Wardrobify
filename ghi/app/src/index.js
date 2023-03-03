@@ -19,7 +19,7 @@ async function loadShoesAndHats() {
     );
   }
   else {
-    console.log("ERROR!!!")
+    console.log("Bad request!")
   }
 }
 loadShoesAndHats();

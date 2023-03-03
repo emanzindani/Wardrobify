@@ -24,6 +24,7 @@ microservice, here.
         - Created 2 views: list of hats and details for one hat.
         - GET and POST methods added to the list of hats. For the POST: called the PREXELS API to get a picture of a hat and have it stored into the newly created hat object.
         - GET, DELETE and PUT methods to the detailed hat object.
+    - updated the polling method to poll the "location" value object from the wardrobe microservice.
     - checked that everything is working fine inside the Insomnia.
 
 - Frond End:
@@ -33,6 +34,8 @@ microservice, here.
         - able to select a location via a dropdown menu.
         - have placeholders to describe each inputs.
     - Created HatList.js:
-        - display all hats with their details.
+        - display all hats with their details: style name, image, fabric, color, location, date of creation.
         - created a "delete" button for each row: when clicked, the corresponding hat is removed from the database and from the browser's page.
     - Updated the Nav.js file to link to newly created paths.
+
+- Added the connections to have the Shoes microservice working as well with the wardrobe and hats microservice.

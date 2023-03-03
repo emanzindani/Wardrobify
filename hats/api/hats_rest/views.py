@@ -21,6 +21,7 @@ class HatListEncoder(ModelEncoder):
         "color",
         "location",
         "created",
+        "url_picture",
         "id",
     ]
     encoders = {
@@ -96,7 +97,6 @@ def list_hats(request, location_vo_id=None):
         # Use the fabric, style name, color in the content dictionary to call the get_photo ACL function
         # Use the returned dictionary to update the content dictionary
         content["url_picture"] = get_photo(content["fabric"], content["style_name"], content["color"]) #adds a new pair in the content dictionary
-
 
         hat = Hat.objects.create(**content)
         return JsonResponse(
