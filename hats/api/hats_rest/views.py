@@ -18,8 +18,14 @@ class HatListEncoder(ModelEncoder):
     properties = [
         "fabric",
         "style_name",
+        "color",
+        "location",
+        "created",
         "id",
     ]
+    encoders = {
+        "location": LocationVODetailEncoder(),
+    }
 
 
 class HatDetailEncoder(ModelEncoder):
@@ -62,8 +68,10 @@ def list_hats(request, location_vo_id=None):
     }
     """
     if request.method == "GET":
-
-        hats = Hat.objects.filter(location=location_vo_id)
+        if location_vo_id is not None:
+            hats = Hat.objects.filter(location=location_vo_id)
+        else:
+            hats = Hat.objects.all()
 
         return JsonResponse(
             {"hats": hats},
