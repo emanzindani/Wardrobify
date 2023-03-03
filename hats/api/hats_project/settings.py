@@ -26,12 +26,13 @@ SECRET_KEY = 'django-insecure-octnr2p$zuhnw6l6$k*1c$ggb_sg#awm-tv8kqj6+!-fttfo()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["wardrobe-api", 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "hats_rest.apps.HatsApiConfig",
     "corsheaders",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
+
+CRONJOBS = [
+    ("* * * * *", "hats_rest.poll.get_locations"),
 ]
 
 MIDDLEWARE = [
@@ -53,11 +58,18 @@ MIDDLEWARE = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:8090",
+    "http://localhost:8000",
+    "http://localhost:8100",
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:8090",
+    "http://localhost:8000",
+    "http://localhost:8100",
 ]
+
 CORS_ALLOW_CREDENTIALS = True
 
 DJWTO_MODE = "TWO-COOKIES"

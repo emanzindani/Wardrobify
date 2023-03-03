@@ -1,0 +1,1 @@
+PEXELS_API_KEY = "Metd4FeDWF3Bzaf3P1YdlKzdcgX0MgXRwok8Rjur6NZbnsCwQuTX3VLu"
